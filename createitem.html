@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Item Form</h2>
+    <form action='http://localhost:3000/item/create' method="POST">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        
+        <label for="QTY">Quantity:</label><br>
+        <input type="number" id="QTY" name="QTY"><br>
+        
+        <label for="vendor">Vendor:</label><br>
+        <select  id="vendor" name="vendor">
+              
+        </select>
+        <br>
+        
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+</html>
+<script>
+    
+fetch('http://localhost:3000/vendor/allVenders' ,{
+    method: 'GET'
+})
+.then(response => response.json())
+.then(data => {
+    const vendorDropdown = document.getElementById('vendor');
+    data.forEach(vendor => {
+        const option = document.createElement('option');
+        option.value = vendor.id;
+        option.textContent = vendor.Name;
+        vendorDropdown.appendChild(option);
+    });
+})</script>
